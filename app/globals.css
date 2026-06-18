@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #060b1c;
+  --color-navy-900: #0a1230;
+  --color-navy-800: #0f1b45;
+  --color-navy-700: #16265f;
+  --color-gold-400: #ffce3a;
+  --color-gold-500: #f5b800;
+  --color-gold-600: #d99700;
+  --color-siren: #ff2d2d;
+  --color-siren-blue: #2d7dff;
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-18px) translateX(8px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes siren-left {
+  0%, 100% {
+    opacity: 0.48;
+    transform: translateX(-10px) skewY(-4deg) scaleX(0.96);
+  }
+  32% {
+    opacity: 0.9;
+    transform: translateX(16px) skewY(-2deg) scaleX(1.08);
+  }
+  64% {
+    opacity: 0.58;
+    transform: translateX(4px) skewY(-6deg) scaleX(1);
+  }
+}
+
+@keyframes siren-right {
+  0%, 100% {
+    opacity: 0.52;
+    transform: translateX(12px) skewY(4deg) scaleX(0.98);
+  }
+  36% {
+    opacity: 0.92;
+    transform: translateX(-18px) skewY(2deg) scaleX(1.08);
+  }
+  68% {
+    opacity: 0.6;
+    transform: translateX(-4px) skewY(6deg) scaleX(1);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: var(--color-navy-950);
+  color: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-navy-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-700);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-600);
+}
+
+/* autofill fix so inputs stay on theme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f8fafc;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(15, 27, 69, 0.6) inset;
+  caret-color: #f8fafc;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.siren-signals {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.siren-signal {
+  position: absolute;
+  top: -8%;
+  bottom: -8%;
+  width: clamp(210px, 27vw, 470px);
+  opacity: 0.64;
+  will-change: opacity, transform;
+}
+
+.siren-signal::before,
+.siren-signal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.siren-signal::before {
+  background:
+    radial-gradient(ellipse at 12% 20%, rgba(255, 45, 45, 0.48), transparent 42%),
+    radial-gradient(ellipse at 15% 78%, rgba(45, 125, 255, 0.38), transparent 48%),
+    linear-gradient(90deg, rgba(255, 45, 45, 0.2), rgba(45, 125, 255, 0.12) 42%, transparent 88%);
+}
+
+.siren-signal::after {
+  opacity: 0.5;
+  background:
+    linear-gradient(103deg, transparent 10%, rgba(255, 255, 255, 0.14) 24%, transparent 42%),
+    linear-gradient(76deg, transparent 24%, rgba(45, 125, 255, 0.2) 44%, transparent 64%);
+}
+
+.siren-signal-left {
+  left: -7%;
+  animation: siren-left 5.2s ease-in-out infinite;
+}
+
+.siren-signal-right {
+  right: -7%;
+  animation: siren-right 5.2s ease-in-out infinite 1.3s;
+  transform-origin: right center;
+}
+
+.siren-signal-right::before {
+  background:
+    radial-gradient(ellipse at 88% 22%, rgba(45, 125, 255, 0.5), transparent 44%),
+    radial-gradient(ellipse at 82% 76%, rgba(255, 45, 45, 0.34), transparent 48%),
+    linear-gradient(270deg, rgba(45, 125, 255, 0.22), rgba(255, 45, 45, 0.14) 44%, transparent 88%);
+}
+
+.siren-signal-right::after {
+  background:
+    linear-gradient(77deg, transparent 12%, rgba(255, 255, 255, 0.14) 26%, transparent 44%),
+    linear-gradient(104deg, transparent 26%, rgba(255, 45, 45, 0.18) 46%, transparent 66%);
+}
+
+@media (max-width: 767px) {
+  .siren-signal {
+    width: clamp(150px, 34vw, 260px);
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .siren-signal {
+    animation: none;
+    opacity: 0.38;
+  }
+}
