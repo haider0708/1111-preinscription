@@ -182,28 +182,49 @@ input:-webkit-autofill:focus {
 }
 
 /*
- * Tablet + HD (768px–1535px): smaller form so it stays in the poster’s
- * central slot. Mobile (<768) and 2xl+ (1920×1080) keep full size.
+ * Tablet + HD (768px–1535px): compact form in the poster’s central slot.
+ * Mobile (<768) and 2xl+ (1920×1080) keep full size.
  */
 @media (min-width: 768px) and (max-width: 1535px) {
+  .signup-form-shell {
+    align-items: center;
+    padding-top: clamp(0.5rem, 2vh, 1.25rem);
+    padding-bottom: clamp(0.5rem, 2vh, 1.25rem);
+  }
+
   .signup-form-root {
     max-width: 17rem;
-    transform: scale(0.78);
+    transform: scale(0.74) translateY(1.25vh);
     transform-origin: center center;
   }
 
+  .signup-form-spotlight {
+    inset: -0.5rem -1.75rem;
+  }
+
   .signup-form-card {
-    padding: 0.875rem 1rem;
-    border-radius: 1.25rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: 1.125rem;
+  }
+
+  .signup-form-card > div:first-of-type {
+    height: 3.5rem;
   }
 
   .signup-form-header {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.4375rem !important;
+  }
+
+  .signup-form-header > span {
+    margin-bottom: 0.3125rem;
+    padding: 0.1875rem 0.5625rem;
+    font-size: 0.625rem;
+    gap: 0.3125rem;
   }
 
   .signup-form-header h1 {
-    font-size: 1.0625rem;
-    line-height: 1.25;
+    font-size: 1rem;
+    line-height: 1.2;
   }
 
   .signup-form-header p {
@@ -211,33 +232,59 @@ input:-webkit-autofill:focus {
   }
 
   .signup-form-fields {
-    gap: 0.5rem !important;
+    gap: 0.4375rem !important;
   }
 
   .signup-form-fields .group {
-    border-radius: 0.625rem;
+    border-radius: 0.5rem;
+  }
+
+  .signup-form-field svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .signup-form-field > div > span:first-child {
+    padding-left: 0.6875rem;
   }
 
   .signup-form-field input {
     font-size: 0.8125rem;
-    padding-top: 1.125rem;
-    padding-bottom: 0.375rem;
+    padding-top: 1rem;
+    padding-bottom: 0.3125rem;
+    padding-left: 0.5625rem;
+    padding-right: 0.5625rem;
   }
 
   .signup-form-field label {
     font-size: 0.8125rem;
+    left: 0.5625rem;
   }
 
   .signup-form-field input:not(:placeholder-shown) + label,
   .signup-form-field input:focus + label {
     font-size: 0.625rem;
-    top: 0.375rem;
+    top: 0.3125rem;
+  }
+
+  .signup-form-prefs {
+    padding-top: 0 !important;
+    gap: 0.3125rem !important;
+  }
+
+  .signup-form-prefs > p {
+    display: none;
   }
 
   .signup-form-toggle {
-    gap: 0.5rem;
-    padding: 0.4375rem 0.625rem;
-    border-radius: 0.625rem;
+    gap: 0.4375rem;
+    padding: 0.375rem 0.5625rem;
+    border-radius: 0.5625rem;
+  }
+
+  .signup-form-toggle span:first-child svg {
+    width: 1rem;
+    height: 1rem;
   }
 
   .signup-form-toggle span:nth-child(2) {
@@ -246,70 +293,75 @@ input:-webkit-autofill:focus {
   }
 
   .signup-form-toggle span:last-child {
-    height: 1.25rem;
-    width: 2.25rem;
+    height: 1.1875rem;
+    width: 2.125rem;
   }
 
   .signup-form-toggle span:last-child > span {
-    height: 1rem;
-    width: 1rem;
+    height: 0.9375rem;
+    width: 0.9375rem;
+    top: 0.125rem;
+  }
+
+  .signup-form-toggle[aria-pressed="true"] span:last-child > span {
+    left: 1.0625rem !important;
   }
 
   .signup-form-submit {
-    margin-top: 0.25rem;
-    padding-top: 0.5625rem;
-    padding-bottom: 0.5625rem;
+    margin-top: 0.1875rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     font-size: 0.8125rem;
-    border-radius: 0.625rem;
+    border-radius: 0.5625rem;
   }
 
   .signup-form-success {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .signup-form-success h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .signup-form-success > span {
-    height: 4rem;
-    width: 4rem;
-    margin-bottom: 1rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    margin-bottom: 0.75rem;
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1535px) {
   .signup-form-root {
-    max-width: 18.5rem;
-    transform: scale(0.84);
+    max-width: 18rem;
+    transform: scale(0.78) translateY(1vh);
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1535px) {
   .signup-form-root {
-    max-width: 20rem;
-    transform: scale(0.9);
+    max-width: 19rem;
+    transform: scale(0.82) translateY(0.75vh);
   }
 }
 
 /* Short viewports (tablet landscape, 1366×768, etc.) */
 @media (min-width: 768px) and (max-width: 1535px) and (max-height: 900px) {
   .signup-form-root {
-    transform: scale(0.72);
+    transform: scale(0.68) translateY(1.5vh);
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1535px) and (max-height: 900px) {
   .signup-form-root {
-    max-width: 17.5rem;
-    transform: scale(0.76);
+    max-width: 17rem;
+    transform: scale(0.72) translateY(1.25vh);
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1535px) and (max-height: 900px) {
   .signup-form-root {
-    max-width: 18.5rem;
-    transform: scale(0.82);
+    max-width: 18rem;
+    transform: scale(0.76) translateY(1vh);
   }
 }

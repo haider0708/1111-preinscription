@@ -335,7 +335,7 @@ export default function SignupForm() {
       {/* soft spotlight that seats the form over the busy poster:
           darkens just around the card so the rest of the poster stays bright */}
       <div
-        className="pointer-events-none absolute -inset-x-8 -inset-y-14"
+        className="pointer-events-none absolute -inset-x-8 -inset-y-14 signup-form-spotlight"
         style={{
           background:
             "radial-gradient(closest-side, rgba(6,11,28,0.72), rgba(6,11,28,0.38) 62%, rgba(6,11,28,0) 100%)",
@@ -430,7 +430,7 @@ export default function SignupForm() {
                 />
 
                 {/* Preferences */}
-                <motion.div variants={item} className="space-y-2 pt-1">
+                <motion.div variants={item} className="space-y-2 pt-1 signup-form-prefs">
                   <p className="px-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
                     Mes préférences
                   </p>
