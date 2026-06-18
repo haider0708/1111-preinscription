@@ -103,7 +103,7 @@ function Field({
   const active = focused || value.length > 0;
 
   return (
-    <motion.div variants={item} className="relative">
+    <motion.div variants={item} className="relative signup-form-field">
       <div
         className={`group relative flex items-center rounded-xl border bg-navy-900/50 transition-all duration-300
           ${
@@ -199,7 +199,7 @@ function Toggle({
       onClick={onChange}
       whileTap={{ scale: 0.98 }}
       aria-pressed={checked}
-      className={`flex w-full items-center gap-3 rounded-xl border px-3.5 py-2.5 text-left transition-all duration-300
+      className={`flex w-full items-center gap-3 rounded-xl border px-3.5 py-2.5 text-left transition-all duration-300 signup-form-toggle
         ${
           checked
             ? "border-gold-500/40 bg-gold-500/10"
@@ -327,10 +327,10 @@ export default function SignupForm() {
   return (
     <motion.div
       // The card mounts after the delay, already using the final glass blur.
-      initial={{ y: 18, scale: 0.985 }}
-      animate={{ y: 0, scale: 1 }}
+      initial={{ y: 18, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full max-w-md"
+      className="relative w-full"
     >
       {/* soft spotlight that seats the form over the busy poster:
           darkens just around the card so the rest of the poster stays bright */}
@@ -349,7 +349,7 @@ export default function SignupForm() {
         aria-hidden
       />
 
-      <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.14] to-white/[0.04] p-5 shadow-2xl shadow-black/50 ring-1 ring-inset ring-white/10 backdrop-blur-2xl backdrop-saturate-150 sm:p-6">
+      <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.14] to-white/[0.04] p-5 shadow-2xl shadow-black/50 ring-1 ring-inset ring-white/10 backdrop-blur-2xl backdrop-saturate-150 sm:p-6 signup-form-card">
         {/* specular sheen across the top of the glass */}
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/15 to-transparent"
@@ -367,7 +367,7 @@ export default function SignupForm() {
           ) : (
             <motion.div key="form" variants={container} initial="hidden" animate="show" exit={{ opacity: 0 }}>
               {/* Compact header (the poster already carries the big branding) */}
-              <motion.div variants={item} className="mb-4 text-center">
+              <motion.div variants={item} className="mb-4 text-center signup-form-header">
                 <span className="relative mb-2 inline-flex items-center gap-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold-300">
                   <span className="absolute -left-0.5 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-siren animate-pulse-ring" aria-hidden />
                   <Siren size={13} strokeWidth={2.6} /> Pré-inscription
@@ -380,7 +380,7 @@ export default function SignupForm() {
                 </p>
               </motion.div>
 
-              <form onSubmit={handleSubmit} noValidate className="space-y-3">
+              <form onSubmit={handleSubmit} noValidate className="space-y-3 signup-form-fields">
                 <input
                   type="text"
                   name="website"
@@ -467,7 +467,7 @@ export default function SignupForm() {
                   disabled={status === "loading"}
                   whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
                   whileTap={{ scale: status === "loading" ? 1 : 0.98 }}
-                  className="group relative mt-1 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-3 text-[15px] font-bold text-navy-950 shadow-lg shadow-gold-500/25 transition-shadow hover:shadow-gold-500/40 disabled:cursor-not-allowed disabled:opacity-90"
+                  className="group relative mt-1 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-3 text-[15px] font-bold text-navy-950 shadow-lg shadow-gold-500/25 transition-shadow hover:shadow-gold-500/40 disabled:cursor-not-allowed disabled:opacity-90 signup-form-submit"
                 >
                   {/* shimmer sweep */}
                   <span
@@ -501,7 +501,7 @@ function SuccessView({ name }: { name: string }) {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="flex flex-col items-center py-14 text-center"
+      className="flex flex-col items-center py-14 text-center signup-form-success"
     >
       <motion.span
         initial={{ scale: 0, rotate: -30 }}

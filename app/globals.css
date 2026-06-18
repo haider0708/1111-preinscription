@@ -180,3 +180,136 @@ input:-webkit-autofill:focus {
     opacity: 0.38;
   }
 }
+
+/*
+ * Tablet + HD (768px–1535px): smaller form so it stays in the poster’s
+ * central slot. Mobile (<768) and 2xl+ (1920×1080) keep full size.
+ */
+@media (min-width: 768px) and (max-width: 1535px) {
+  .signup-form-root {
+    max-width: 17rem;
+    transform: scale(0.78);
+    transform-origin: center center;
+  }
+
+  .signup-form-card {
+    padding: 0.875rem 1rem;
+    border-radius: 1.25rem;
+  }
+
+  .signup-form-header {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .signup-form-header h1 {
+    font-size: 1.0625rem;
+    line-height: 1.25;
+  }
+
+  .signup-form-header p {
+    display: none;
+  }
+
+  .signup-form-fields {
+    gap: 0.5rem !important;
+  }
+
+  .signup-form-fields .group {
+    border-radius: 0.625rem;
+  }
+
+  .signup-form-field input {
+    font-size: 0.8125rem;
+    padding-top: 1.125rem;
+    padding-bottom: 0.375rem;
+  }
+
+  .signup-form-field label {
+    font-size: 0.8125rem;
+  }
+
+  .signup-form-field input:not(:placeholder-shown) + label,
+  .signup-form-field input:focus + label {
+    font-size: 0.625rem;
+    top: 0.375rem;
+  }
+
+  .signup-form-toggle {
+    gap: 0.5rem;
+    padding: 0.4375rem 0.625rem;
+    border-radius: 0.625rem;
+  }
+
+  .signup-form-toggle span:nth-child(2) {
+    font-size: 0.6875rem;
+    line-height: 1.2;
+  }
+
+  .signup-form-toggle span:last-child {
+    height: 1.25rem;
+    width: 2.25rem;
+  }
+
+  .signup-form-toggle span:last-child > span {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .signup-form-submit {
+    margin-top: 0.25rem;
+    padding-top: 0.5625rem;
+    padding-bottom: 0.5625rem;
+    font-size: 0.8125rem;
+    border-radius: 0.625rem;
+  }
+
+  .signup-form-success {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .signup-form-success h2 {
+    font-size: 1.5rem;
+  }
+
+  .signup-form-success > span {
+    height: 4rem;
+    width: 4rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1535px) {
+  .signup-form-root {
+    max-width: 18.5rem;
+    transform: scale(0.84);
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .signup-form-root {
+    max-width: 20rem;
+    transform: scale(0.9);
+  }
+}
+
+/* Short viewports (tablet landscape, 1366×768, etc.) */
+@media (min-width: 768px) and (max-width: 1535px) and (max-height: 900px) {
+  .signup-form-root {
+    transform: scale(0.72);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1535px) and (max-height: 900px) {
+  .signup-form-root {
+    max-width: 17.5rem;
+    transform: scale(0.76);
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) and (max-height: 900px) {
+  .signup-form-root {
+    max-width: 18.5rem;
+    transform: scale(0.82);
+  }
+}

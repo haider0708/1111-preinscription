@@ -24,8 +24,10 @@ export default function Home() {
       </div>
 
       {/* Content — only the form; the spotlight that seats it lives in the form itself */}
-      <div className="relative z-10 flex min-h-dvh w-full items-center justify-center px-4 py-8 sm:px-6 md:-translate-y-4 lg:-translate-y-6">
-        <SignupForm />
+      <div className="relative z-10 flex min-h-dvh w-full items-center justify-center px-4 py-8 sm:px-6 md:py-6 2xl:py-8">
+        <div className="signup-form-root w-full max-w-md">
+          <SignupForm />
+        </div>
       </div>
     </main>
   );
